@@ -9,7 +9,7 @@ const RouterLayout = createRouterLayout(layout => {
   return import('@/layouts/' + layout + '.vue')
 })
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -18,3 +18,9 @@ export default new Router({
     }
   ]
 })
+
+router.afterEach(() => {
+  setTimeout(() => console.log(document.title), 5)
+})
+
+export default router
